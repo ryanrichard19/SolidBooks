@@ -1,0 +1,16 @@
+@startuml InvoicingApplication-Context
+!theme plain
+
+actor Administrator as Admin
+actor Employee
+actor Customer
+actor "Email Service" as EmailService
+
+rectangle InvoicingApplication {
+    Admin --> (Invoicing Application) : Manages\nsettings & users
+    Employee --> (Invoicing Application) : Generates\n& manages invoices
+    Customer --> (Invoicing Application) : Receives & views\ninvoices, makes payments
+    (Invoicing Application) --> EmailService : Sends invoices\n& notifications
+}
+
+@enduml

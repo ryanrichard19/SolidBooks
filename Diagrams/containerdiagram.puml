@@ -1,0 +1,20 @@
+@startuml InvoicingApplication-Container
+!theme plain
+
+rectangle "Invoicing Application" {
+    [Blazor Web App] as BlazorWebApp
+    [ASP.NET Minimal API] as MinimalAPI
+    database "PostgreSQL Database" as PostgreSQL
+    [Email Service] as EmailService
+
+    BlazorWebApp --> MinimalAPI : Uses
+    MinimalAPI --> PostgreSQL : Reads/Writes
+    MinimalAPI --> EmailService : Integrates
+}
+
+note right of BlazorWebApp : Client-Side\nBlazor WebAssembly
+note right of MinimalAPI : Server-Side\n.NET 8 Minimal API
+note right of PostgreSQL : Stores all application data
+note right of EmailService : External service\nfor sending emails
+
+@enduml
